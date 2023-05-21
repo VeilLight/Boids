@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbp8eaauxnnv"]
+
+[ext_resource type="Script" path="res://boids2d/boid.gd" id="1_wo7nb"]
+
+[node name="Polygon2D" type="Polygon2D"]
+position = Vector2(260, 199)
+rotation = 3.14159
+scale = Vector2(8, 8)
+polygon = PackedVector2Array(0.5, 0, 0.9, 1, 0.1, 1)
+vertex_colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+script = ExtResource("1_wo7nb")
+metadata/Speed = 2

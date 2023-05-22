@@ -10,4 +10,4 @@ polygon = PackedVector2Array(0.5, 0, 0.9, 1, 0.1, 1)
 vertex_colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
 script = ExtResource("1_wo7nb")
 metadata/max_speed = 5
-metadata/min_speed = 2
+metadata/min_speed = 3

@@ -2,6 +2,9 @@ extends Node2D
 
 # The size of the flock, a.k.a the total number of boids
 const FLOCK_SIZE = 100
+# Represents by how much a boid will turn away from neighbours.
+# The lower the number the higher the turn aggravates.
+const SEPARATION_FACTOR = 200
 # The amount of approximation towards the neighbours center of mass.
 # The lower the number the higher the approximation gets.
 const COHESION_FACTOR = 500
@@ -30,7 +33,16 @@ func _process(_delta):
 		boid.update_velocity(velocity)
 
 func _apply_separation(boid):
-	return Vector2()
+	var separation = Vector2()
+	
+	for b in flock:
+		if b == boid:
+			continue
+		var to_other = boid.position - b.position
+		if to_other.length() < boid.NEIGHBOURHOOD_DISTANCE:
+			separation += to_other
+	
+	return separation / SEPARATION_FACTOR
 
 func _apply_alignment(boid):
 	return Vector2()

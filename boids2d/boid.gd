@@ -1,7 +1,7 @@
 extends Polygon2D
 
 # The distance at which boids are able to see each other.
-const NEIGHBOURHOOD_DISTANCE = 100
+const NEIGHBOURHOOD_DISTANCE = 50
 
 var screen_width = 0
 var screen_height = 0

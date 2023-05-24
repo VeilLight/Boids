@@ -1,7 +1,7 @@
 extends Polygon2D
 
 # The distance at which boids are able to see each other.
-const NEIGHBOURHOOD_DISTANCE = 50
+const NEIGHBOURHOOD_DISTANCE = 25
 
 var screen_width = 0
 var screen_height = 0
@@ -42,6 +42,9 @@ func _navigate_to_other_side_of_screen():
 		set_position(Vector2(position.x, 0))
 	elif position.y < 0:
 		set_position(Vector2(position.x, screen_height))
+
+func get_velocity():
+	return velocity
 
 func update_velocity(_velocity: Vector2):
 	velocity += _velocity

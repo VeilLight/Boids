@@ -2,11 +2,17 @@ extends Node2D
 
 # The size of the flock, a.k.a the total number of boids
 const FLOCK_SIZE = 100
+
 # Represents by how much a boid will turn away from neighbours.
-# The lower the number the higher the turn aggravates.
+# The lower the number, the higher the turn gets.
 const SEPARATION_FACTOR = 200
+
+# Represents by how much a boid will align with its neighbours directions.
+# The lower the number, the higher the alignment gets.
+const ALIGNMENT_FACTOR = 18
+
 # The amount of approximation towards the neighbours center of mass.
-# The lower the number the higher the approximation gets.
+# The lower the number, the higher the approximation gets.
 const COHESION_FACTOR = 500
 
 var boid_scene = preload("res://boids2d/boid.tscn")
@@ -38,14 +44,35 @@ func _apply_separation(boid):
 	for b in flock:
 		if b == boid:
 			continue
+		
 		var to_other = boid.position - b.position
-		if to_other.length() < boid.NEIGHBOURHOOD_DISTANCE:
-			separation += to_other
+		if to_other.length() > boid.NEIGHBOURHOOD_DISTANCE:
+			continue
+		
+		separation += to_other
 	
 	return separation / SEPARATION_FACTOR
 
 func _apply_alignment(boid):
-	return Vector2()
+	var avg_neighbours_velocities = Vector2()
+	var neighbours = 0
+	
+	for b in flock:
+		if b == boid:
+			continue
+		
+		var distance = boid.position.distance_to(b.position)
+		if distance > boid.NEIGHBOURHOOD_DISTANCE:
+			continue
+		
+		avg_neighbours_velocities += b.get_velocity()
+		neighbours += 1
+	
+	if neighbours == 0:
+		return Vector2()
+	
+	var avg_velocity = avg_neighbours_velocities / neighbours
+	return (avg_velocity - boid.get_velocity()) / ALIGNMENT_FACTOR
 
 func _apply_cohesion(boid):
 	var avg_neighbours_positions = Vector2()
@@ -54,13 +81,16 @@ func _apply_cohesion(boid):
 	for b in flock:
 		if b == boid:
 			continue
+		
 		var distance = boid.position.distance_to(b.position)
-		if distance < boid.NEIGHBOURHOOD_DISTANCE:
-			avg_neighbours_positions += b.position
-			neighbours += 1
+		if distance > boid.NEIGHBOURHOOD_DISTANCE:
+			continue
+		
+		avg_neighbours_positions += b.position
+		neighbours += 1
 	
-	if neighbours > 0:
-		var center_of_mass_position = avg_neighbours_positions / neighbours
-		return (center_of_mass_position - boid.position) / COHESION_FACTOR
+	if neighbours == 0:
+		return Vector2()
 	
-	return Vector2()
+	var center_of_mass_position = avg_neighbours_positions / neighbours
+	return (center_of_mass_position - boid.position) / COHESION_FACTOR

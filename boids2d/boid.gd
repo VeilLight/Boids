@@ -8,6 +8,7 @@ var screen_height = 0
 var velocity = Vector2()
 var max_speed = 0
 var min_speed = 0
+var r = 2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,16 +25,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	translate(velocity)
-	if _out_of_screen_bounds():
-		_navigate_to_other_side_of_screen()
+	_navigate_to_other_side_of_screen_if_out_of_bounds()
 
-func _out_of_screen_bounds():
-	return position.x > screen_width \
-		|| position.x < 0 \
-		|| position.y > screen_height \
-		|| position.y < 0
-
-func _navigate_to_other_side_of_screen():
+func _navigate_to_other_side_of_screen_if_out_of_bounds():
 	if position.x > screen_width:
 		set_position(Vector2(0, position.y))
 	elif position.x < 0:

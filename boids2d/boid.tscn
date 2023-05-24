@@ -11,3 +11,5 @@ vertex_colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
 script = ExtResource("1_wo7nb")
 metadata/max_speed = 3
 metadata/min_speed = 2
+metadata/turn_factor = 0.2
+metadata/screen_margin = 55.0

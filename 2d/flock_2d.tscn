@@ -1,6 +1,99 @@
-[gd_scene load_steps=2 format=3 uid="uid://b1vuusl2plpan"]
+[gd_scene load_steps=6 format=3 uid="uid://b1vuusl2plpan"]
 
 [ext_resource type="Script" path="res://2d/flock_2d.gd" id="1_q38td"]
+[ext_resource type="Script" path="res://2d/gui/VisualRangeVBox.gd" id="2_7em4i"]
+[ext_resource type="Script" path="res://2d/gui/SeparationVBox.gd" id="2_t10y5"]
+[ext_resource type="Script" path="res://2d/gui/AlignmentVBox.gd" id="3_51hth"]
+[ext_resource type="Script" path="res://2d/gui/CohesionVBox.gd" id="4_64glq"]
 
 [node name="Boids2D" type="Node2D"]
 script = ExtResource("1_q38td")
+
+[node name="Properties" type="HBoxContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = 650.0
+offset_right = 1024.0
+offset_bottom = 723.0
+grow_vertical = 0
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Separation" type="VBoxContainer" parent="Properties"]
+layout_mode = 2
+script = ExtResource("2_t10y5")
+
+[node name="HSlider" type="HSlider" parent="Properties/Separation"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+min_value = 10.0
+max_value = 400.0
+value = 200.0
+
+[node name="Label" type="Label" parent="Properties/Separation"]
+layout_mode = 2
+tooltip_text = "Represents by how much a boid will turn away from its neighbours.
+The lower the number, the more agrresive the turn gets."
+mouse_filter = 1
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Alignment" type="VBoxContainer" parent="Properties"]
+layout_mode = 2
+script = ExtResource("3_51hth")
+
+[node name="HSlider" type="HSlider" parent="Properties/Alignment"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+min_value = 1.0
+max_value = 200.0
+value = 18.0
+
+[node name="Label" type="Label" parent="Properties/Alignment"]
+layout_mode = 2
+tooltip_text = "Represents by how much a boid will align its direction with its neighbours directions.
+The lower the number, the higher the alignment gets."
+mouse_filter = 1
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cohesion" type="VBoxContainer" parent="Properties"]
+layout_mode = 2
+script = ExtResource("4_64glq")
+
+[node name="HSlider" type="HSlider" parent="Properties/Cohesion"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+min_value = 1.0
+max_value = 1000.0
+value = 500.0
+
+[node name="Label" type="Label" parent="Properties/Cohesion"]
+layout_mode = 2
+tooltip_text = "Represents the boid's approximation towards the center of mass of its neighbours.
+The lower the number, the higher the approximation gets."
+mouse_filter = 1
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VisualRange" type="VBoxContainer" parent="Properties"]
+layout_mode = 2
+script = ExtResource("2_7em4i")
+
+[node name="HSlider" type="HSlider" parent="Properties/VisualRange"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+value = 25.0
+
+[node name="Label" type="Label" parent="Properties/VisualRange"]
+layout_mode = 2
+tooltip_text = "The distance at which a boid is able to see other boids."
+mouse_filter = 1
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="value_changed" from="Properties/Separation/HSlider" to="Properties/Separation" method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="Properties/Alignment/HSlider" to="Properties/Alignment" method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="Properties/Cohesion/HSlider" to="Properties/Cohesion" method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="Properties/VisualRange/HSlider" to="Properties/VisualRange" method="_on_h_slider_value_changed"]

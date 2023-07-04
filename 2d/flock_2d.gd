@@ -1,31 +1,24 @@
 extends Node2D
 
-# The size of the flock, a.k.a the total number of boids
+# The size of the flock, i.e. the total number of boids
 const FLOCK_SIZE = 100
+# The distance from the window bounds at which boids will spawn
+const BOID_SPAWN_MARGIN = 50
 
-# Represents by how much a boid will turn away from neighbours.
-# The lower the number, the higher the turn gets.
-const SEPARATION_FACTOR = 200
-
-# Represents by how much a boid will align with its neighbours directions.
-# The lower the number, the higher the alignment gets.
-const ALIGNMENT_FACTOR = 18
-
-# The amount of approximation towards the neighbours center of mass.
-# The lower the number, the higher the approximation gets.
-const COHESION_FACTOR = 500
-
-var boid_scene = preload("res://2d/boid_2d.tscn")
 var flock = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var boid_scene = preload("res://2d/boid_2d.tscn")
 	var size = get_window().size
+	var max_x = size.x - BOID_SPAWN_MARGIN
+	var max_y = size.y - $Properties.size.y - BOID_SPAWN_MARGIN
+	
 	for i in range(FLOCK_SIZE):
 		var boid = boid_scene.instantiate()
-		var initial_x = randf_range(0, size.x)
-		var initial_y = randf_range(0, size.y)
-		boid.set_position(Vector2(initial_x, initial_y))
+		var initial_x = randf_range(BOID_SPAWN_MARGIN, max_x)
+		var initial_y = randf_range(BOID_SPAWN_MARGIN, max_y)
+		boid.setup(Vector2(initial_x, initial_y), max_y)
 		flock.append(boid)
 		add_child(boid)
 		
@@ -35,8 +28,10 @@ func _process(_delta):
 		var separation = _apply_separation(boid)
 		var alignment = _apply_alignment(boid)
 		var cohesion = _apply_cohesion(boid)
-		var velocity = separation + alignment + cohesion
-		boid.update_velocity(velocity)
+		var velocity: Vector2 = separation + alignment + cohesion
+		
+		if !velocity.is_equal_approx(Vector2.ZERO):
+			boid.update_velocity(velocity)
 
 func _apply_separation(boid):
 	var separation = Vector2()
@@ -46,12 +41,12 @@ func _apply_separation(boid):
 			continue
 		
 		var to_other = boid.position - b.position
-		if to_other.length() > boid.NEIGHBOURHOOD_DISTANCE:
+		if to_other.length() > $Properties/VisualRange/HSlider.value:
 			continue
 		
 		separation += to_other
 	
-	return separation / SEPARATION_FACTOR
+	return separation / $Properties/Separation/HSlider.value
 
 func _apply_alignment(boid):
 	var avg_neighbours_velocities = Vector2()
@@ -62,7 +57,7 @@ func _apply_alignment(boid):
 			continue
 		
 		var distance = boid.position.distance_to(b.position)
-		if distance > boid.NEIGHBOURHOOD_DISTANCE:
+		if distance > $Properties/VisualRange/HSlider.value:
 			continue
 		
 		avg_neighbours_velocities += b.get_velocity()
@@ -72,7 +67,7 @@ func _apply_alignment(boid):
 		return Vector2()
 	
 	var avg_velocity = avg_neighbours_velocities / neighbours
-	return (avg_velocity - boid.get_velocity()) / ALIGNMENT_FACTOR
+	return (avg_velocity - boid.get_velocity()) / $Properties/Alignment/HSlider.value
 
 func _apply_cohesion(boid):
 	var avg_neighbours_positions = Vector2()
@@ -83,7 +78,7 @@ func _apply_cohesion(boid):
 			continue
 		
 		var distance = boid.position.distance_to(b.position)
-		if distance > boid.NEIGHBOURHOOD_DISTANCE:
+		if distance > $Properties/VisualRange/HSlider.value:
 			continue
 		
 		avg_neighbours_positions += b.position
@@ -93,4 +88,4 @@ func _apply_cohesion(boid):
 		return Vector2()
 	
 	var center_of_mass_position = avg_neighbours_positions / neighbours
-	return (center_of_mass_position - boid.position) / COHESION_FACTOR
+	return (center_of_mass_position - boid.position) / $Properties/Cohesion/HSlider.value

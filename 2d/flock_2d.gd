@@ -15,7 +15,7 @@ const ALIGNMENT_FACTOR = 18
 # The lower the number, the higher the approximation gets.
 const COHESION_FACTOR = 500
 
-var boid_scene = preload("res://boids2d/boid.tscn")
+var boid_scene = preload("res://2d/boid_2d.tscn")
 var flock = []
 
 # Called when the node enters the scene tree for the first time.

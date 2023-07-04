@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cvqrbi3qhp5t5"]
-
-[ext_resource type="Script" path="res://boids2d/boids_2d.gd" id="1_hddiv"]
-
-[node name="Boids2D" type="Node2D"]
-script = ExtResource("1_hddiv")

@@ -16,6 +16,8 @@ Craig Reynolds uses [3 simple rules](http://www.red3d.com/cwr/boids/) to define 
 - **Alignment**: move towards the average steering direction of nearby neighbours
 - **Cohesion**: move towards the average positions of nearby neighbours
 
+https://github.com/VeilLight/Boids/assets/12502569/e11ae7c3-0082-4386-a6fd-40047361edc5
+
 ## Usage
 To play around with the various parameters and see how they affect the flocking
 behaviour:

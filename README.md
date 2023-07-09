@@ -26,6 +26,8 @@ behaviour:
   <img src="https://github.com/VeilLight/Boids/blob/main/screenshots/FlockingParameters.png?raw=true" alt="Flocking Parameters"/>
 </p>
 
+> Bonus: Try pressing the left and right mouse button to see what happens!
+
 Download and run the Microsoft Windows version of [Boids
  in the "export" folder](https://github.com/VeilLight/Boids/tree/main/export).
 

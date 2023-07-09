@@ -46,7 +46,7 @@ func _update_rotation():
 func _limit_speed():
 	# Limit speed between a minimum and maximum
 	var velocity_magnitude = velocity.length()
-	var clamped_speed = max(min(velocity_magnitude, speed), speed - 1)
+	var clamped_speed = max(min(velocity_magnitude, speed), max(speed - 1, 1))
 	velocity = velocity / velocity_magnitude * clamped_speed
 	
 func _update_bounds():

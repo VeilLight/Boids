@@ -7,22 +7,19 @@
 [ext_resource type="Script" path="res://2d/gui/CohesionVBox.gd" id="4_64glq"]
 [ext_resource type="Script" path="res://2d/gui/BoidSpeedVBox.gd" id="6_r6exu"]
 
-[node name="Boids2D" type="Node2D"]
+[node name="Flock2D" type="Node2D"]
 script = ExtResource("1_q38td")
 
 [node name="Properties" type="HBoxContainer" parent="."]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = 657.0
+offset_top = 637.0
 offset_right = 1280.0
-offset_bottom = 730.0
-grow_vertical = 0
+offset_bottom = 720.0
 theme_override_constants/separation = 50
 alignment = 1
 
 [node name="Separation" type="VBoxContainer" parent="Properties"]
 layout_mode = 2
+size_flags_vertical = 4
 script = ExtResource("2_t10y5")
 
 [node name="HSlider" type="HSlider" parent="Properties/Separation"]
@@ -40,6 +37,7 @@ vertical_alignment = 1
 
 [node name="Alignment" type="VBoxContainer" parent="Properties"]
 layout_mode = 2
+size_flags_vertical = 4
 script = ExtResource("3_51hth")
 
 [node name="HSlider" type="HSlider" parent="Properties/Alignment"]
@@ -57,12 +55,13 @@ vertical_alignment = 1
 
 [node name="Cohesion" type="VBoxContainer" parent="Properties"]
 layout_mode = 2
+size_flags_vertical = 4
 script = ExtResource("4_64glq")
 
 [node name="HSlider" type="HSlider" parent="Properties/Cohesion"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-value = 30.0
+value = 50.0
 
 [node name="Label" type="Label" parent="Properties/Cohesion"]
 layout_mode = 2
@@ -74,12 +73,13 @@ vertical_alignment = 1
 
 [node name="VisualRange" type="VBoxContainer" parent="Properties"]
 layout_mode = 2
+size_flags_vertical = 4
 script = ExtResource("2_7em4i")
 
 [node name="HSlider" type="HSlider" parent="Properties/VisualRange"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-value = 20.0
+value = 30.0
 
 [node name="Label" type="Label" parent="Properties/VisualRange"]
 layout_mode = 2
@@ -90,6 +90,7 @@ vertical_alignment = 1
 
 [node name="BoidSpeed" type="VBoxContainer" parent="Properties"]
 layout_mode = 2
+size_flags_vertical = 4
 script = ExtResource("6_r6exu")
 
 [node name="HSlider" type="HSlider" parent="Properties/BoidSpeed"]

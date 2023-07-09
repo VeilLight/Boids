@@ -15,7 +15,7 @@ Craig Reynolds uses 3 simple rules to define the boids' behaviours:
 ## Usage
 You can play around with the various parameters and see how they affect the flocking
 behaviour by downloading and running the Microsoft Windows version of [Boids
- in the "App" folder]().
+ in the "app" folder]().
 
 If you want to check and edit the code, don't forget to install Godot's engine version 4.
 

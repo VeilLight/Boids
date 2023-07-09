@@ -2,7 +2,7 @@
 Boids is an algorithm that simulates the behaviour of flocks, herds, and schools developed 
 by [Craig Reynolds in 1987](http://www.red3d.com/cwr/papers/1987/boids.html).
 
-As a way to experiment with Godot Engine, this project implements [Craig's algorithm](http://www.red3d.com/cwr/boids/)
+As a way to experiment with Godot Engine, this project implements Craig's algorithm
 in [Godot 4](https://godotengine.org/) by visualizing it in 2D.
 
 <p align="center">
@@ -11,7 +11,7 @@ in [Godot 4](https://godotengine.org/) by visualizing it in 2D.
 
 ## How it works
 
-Craig Reynolds uses 3 simple rules to define the boids' behaviours:
+Craig Reynolds uses [3 simple rules](http://www.red3d.com/cwr/boids/) to define the boids' behaviours:
 - **Separation**: move away from nearby neighbours to avoid collisions
 - **Alignment**: move towards the average steering direction of nearby neighbours
 - **Cohesion**: move towards the average positions of nearby neighbours

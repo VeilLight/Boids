@@ -21,7 +21,7 @@ To play around with the various parameters and see how they affect the flocking
 behaviour:
 
 <p align="center">
-  <img src="https://github.com/VeilLight/Boids/blob/main/screenshots/screenshots/FlockingParameters.png?raw=true" alt="Flocking Parameters"/>
+  <img src="https://github.com/VeilLight/Boids/blob/main/screenshots/FlockingParameters.png?raw=true" alt="Flocking Parameters"/>
 </p>
 
 Download and run the Microsoft Windows version of [Boids

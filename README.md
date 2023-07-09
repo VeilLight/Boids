@@ -40,11 +40,11 @@ current calculations will still apply. Also, changing to a 3D scene with a simpl
 or cone as the boids' geometry should do the trick!
 
 
-- All boids are naively checking all other boids in the screen when calculations the
+- Boids are naively checking all other boids in the screen when calculating the
 Separation, Alignment and Cohesion parameters. While this is not a problem with a small
-number of boids in the screen, bigger flock numbers can slow down the visualization. Implementing
+number of boids, bigger flock numbers can slow down the visualization. Implementing
 strategies like [K-D Trees](https://en.wikipedia.org/wiki/K-d_tree) would restrict each boids' queries 
-to the nearest neighbours.
+to the nearest neighbours, making it faster to perform such calculations.
 
 ## License
 This project is released under the [MIT License](https://github.com/VeilLight/Boids/blob/main/LICENSE).

@@ -14,10 +14,9 @@ script = ExtResource("1_q38td")
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = -1.0
-offset_top = 1010.0
-offset_right = 1279.0
-offset_bottom = 1083.0
+offset_top = 657.0
+offset_right = 1280.0
+offset_bottom = 730.0
 grow_vertical = 0
 theme_override_constants/separation = 50
 alignment = 1
@@ -29,7 +28,7 @@ script = ExtResource("2_t10y5")
 [node name="HSlider" type="HSlider" parent="Properties/Separation"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-value = 45.0
+value = 60.0
 
 [node name="Label" type="Label" parent="Properties/Separation"]
 layout_mode = 2
@@ -46,7 +45,7 @@ script = ExtResource("3_51hth")
 [node name="HSlider" type="HSlider" parent="Properties/Alignment"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-value = 80.0
+value = 60.0
 
 [node name="Label" type="Label" parent="Properties/Alignment"]
 layout_mode = 2
@@ -63,7 +62,7 @@ script = ExtResource("4_64glq")
 [node name="HSlider" type="HSlider" parent="Properties/Cohesion"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-value = 70.0
+value = 30.0
 
 [node name="Label" type="Label" parent="Properties/Cohesion"]
 layout_mode = 2
@@ -80,7 +79,7 @@ script = ExtResource("2_7em4i")
 [node name="HSlider" type="HSlider" parent="Properties/VisualRange"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-value = 50.0
+value = 20.0
 
 [node name="Label" type="Label" parent="Properties/VisualRange"]
 layout_mode = 2
@@ -98,7 +97,7 @@ custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 min_value = 1.0
 max_value = 15.0
-value = 5.0
+value = 4.0
 
 [node name="Label" type="Label" parent="Properties/BoidSpeed"]
 layout_mode = 2

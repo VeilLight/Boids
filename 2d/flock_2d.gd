@@ -4,9 +4,9 @@ extends Node2D
 const FLOCK_SIZE: int = 100
 # The distance from the window bounds at which boids will spawn
 const BOID_SPAWN_MARGIN: int = 55
-const SEPARATION_WEIGHT: float = 0.05
+const SEPARATION_WEIGHT: float = 0.06
 const ALIGNMENT_WEIGHT: float = 0.35
-const COHESION_WEIGHT: float = 0.06
+const COHESION_WEIGHT: float = 0.05
 
 var flock = []
 

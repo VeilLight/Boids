@@ -30,7 +30,7 @@ value = 60.0
 [node name="Label" type="Label" parent="Properties/Separation"]
 layout_mode = 2
 tooltip_text = "Represents by how much a boid will turn away from its neighbours.
-The lower the number, the more agrresive the turn gets."
+The higher the number, the more separated the boids get."
 mouse_filter = 1
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -48,7 +48,7 @@ value = 60.0
 [node name="Label" type="Label" parent="Properties/Alignment"]
 layout_mode = 2
 tooltip_text = "Represents by how much a boid will align its direction with its neighbours directions.
-The lower the number, the higher the alignment gets."
+The higher the number, the higher the alignment gets."
 mouse_filter = 1
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -66,7 +66,7 @@ value = 50.0
 [node name="Label" type="Label" parent="Properties/Cohesion"]
 layout_mode = 2
 tooltip_text = "Represents the boid's approximation towards the center of mass of its neighbours.
-The lower the number, the higher the approximation gets."
+The higher the number, the higher the approximation gets."
 mouse_filter = 1
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -102,7 +102,7 @@ value = 4.0
 
 [node name="Label" type="Label" parent="Properties/BoidSpeed"]
 layout_mode = 2
-tooltip_text = "The distance at which a boid is able to see other boids."
+tooltip_text = "The speed of the boids."
 mouse_filter = 1
 horizontal_alignment = 1
 vertical_alignment = 1

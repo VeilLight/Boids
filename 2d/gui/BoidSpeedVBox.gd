@@ -9,4 +9,4 @@ func _on_h_slider_value_changed(value):
 	_set_label_text(value)
 
 func _set_label_text(value):
-	$Label.text = "Boid Speed: " + str(value)
+	$Label.text = "Speed: " + str(value)
